@@ -1,2 +1,1 @@
-# circleci-with-prince
-Official CircleCI with prince installed
+# Official CircleCI Ducker image with Prince XML
