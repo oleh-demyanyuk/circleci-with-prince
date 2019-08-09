@@ -15,3 +15,5 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.14.3/cmake-3.14.3
       && rm /tmp/cmake-install.sh
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
+
+RUN gem install pronto
