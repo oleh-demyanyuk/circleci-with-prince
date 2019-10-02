@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.3.7-node-browsers-legacy
+FROM circleci/ruby:2.6.5-stretch-node-browsers-legacy
 
 RUN FILE=`mktemp` &&\
     URL='https://www.princexml.com/download/prince_11.4-1_debian9.1_amd64.deb' &&\
