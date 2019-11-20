@@ -16,4 +16,20 @@ RUN apt update && \
     && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
     && rm /tmp/cmake-install.sh
 
+# Install libpostal
+RUN apt-get update && apt-get install -y \
+    autoconf automake build-essential curl git libsnappy-dev libtool pkg-config
+
+RUN git clone https://github.com/openvenues/libpostal
+
+WORKDIR libpostal
+
+RUN ./bootstrap.sh \
+    && mkdir -p /opt/libpostal_data \
+    && ./configure --datadir=/opt/libpostal_data
+
+RUN make && make install && ldconfig
+
+WORKDIR ..
+
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
