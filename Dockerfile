@@ -6,15 +6,14 @@ RUN FILE=`mktemp` &&\
     sudo dpkg -i $FILE &&\
     rm -f $FILE
 
-USER root
-RUN apt update && \
-    apt install libssl-dev && \
-    wget https://github.com/Kitware/CMake/releases/download/v3.14.3/cmake-3.14.3-Linux-x86_64.sh \
-    -q -O /tmp/cmake-install.sh \
-    && chmod u+x /tmp/cmake-install.sh \
-    && mkdir /usr/bin/cmake \
-    && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
-    && rm /tmp/cmake-install.sh
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  cmake \
+  software-properties-common \
+  pkg-config \
+  openssl \
+  libssl-dev \
+  nodejs
 
 # Install libpostal
 RUN apt-get update && apt-get install -y \
