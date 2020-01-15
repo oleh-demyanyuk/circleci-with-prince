@@ -6,6 +6,7 @@ RUN FILE=`mktemp` &&\
     sudo dpkg -i $FILE &&\
     rm -f $FILE
 
+USER root
 RUN apt-get update && apt-get install -y \
   build-essential \
   cmake \
